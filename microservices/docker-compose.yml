@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  # ==================== TRAEFIK ====================
+  #  TRAEFIK
   traefik:
     image: traefik:v2.10
     container_name: traefik
@@ -13,16 +13,16 @@ services:
       - "--log.level=INFO"
     ports:
       - "80:80"
-      - "8080:8080"
+      - "8080:8080" # Traefik Dashboard
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
       - escolastico-network
     restart: unless-stopped
 
-  # ==================== API GATEWAY ====================
+  #  API GATEWAY
   api-gateway:
-    build: ./microservices/api-gateway
+    build: ./api-gateway
     container_name: api-gateway
     ports:
       - "8000:8000"
@@ -47,9 +47,9 @@ services:
       - asistencia-service
     restart: unless-stopped
 
-  # ==================== USUARIOS SERVICE ====================
+  #  USUARIOS SERVICE
   usuarios-service:
-    build: ./microservices/usuarios-service
+    build: ./usuarios-service
     container_name: usuarios-service
     ports:
       - "5001:5001"
@@ -75,9 +75,9 @@ services:
       - escolastico-network
     restart: unless-stopped
 
-  # ==================== CURSOS SERVICE ====================
+  #  CURSOS SERVICE
   cursos-service:
-    build: ./microservices/cursos-service
+    build: ./cursos-service
     container_name: cursos-service
     ports:
       - "5002:5002"
@@ -103,9 +103,9 @@ services:
       - escolastico-network
     restart: unless-stopped
 
-  # ==================== MATRICULAS SERVICE ====================
+  #  MATRICULAS SERVICE
   matriculas-service:
-    build: ./microservices/matriculas-service
+    build: ./matriculas-service
     container_name: matriculas-service
     ports:
       - "5003:5003"
@@ -131,9 +131,9 @@ services:
       - escolastico-network
     restart: unless-stopped
 
-  # ==================== CALIFICACIONES SERVICE ====================
+  #  CALIFICACIONES SERVICE
   calificaciones-service:
-    build: ./microservices/calificaciones-service
+    build: ./calificaciones-service
     container_name: calificaciones-service
     ports:
       - "5004:5004"
@@ -159,9 +159,9 @@ services:
       - escolastico-network
     restart: unless-stopped
 
-  # ==================== ASISTENCIA SERVICE ====================
+  #  ASISTENCIA SERVICE
   asistencia-service:
-    build: ./microservices/asistencia-service
+    build: ./asistencia-service
     container_name: asistencia-service
     ports:
       - "5005:5005"

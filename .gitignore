@@ -1,0 +1,38 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker
+docker-compose.override.yml
+
+# MongoDB
+data/
+*.dump
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.python-version
