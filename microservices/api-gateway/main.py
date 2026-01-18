@@ -40,14 +40,16 @@ async def root():
         "message": "Escolastico API Gateway - Microservicios",
         "version": "1.0.0",
         "services": {
-            "usuarios": f"{SERVICES['usuarios']}/api-docs",
-            "cursos": f"{SERVICES['cursos']}/api-docs",
-            "matriculas": f"{SERVICES['matriculas']}/api-docs",
-            "calificaciones": f"{SERVICES['calificaciones']}/api-docs",
-            "asistencia": f"{SERVICES['asistencia']}/api-docs",
+            "usuarios": "http://localhost:5001/api-docs", # Swagger del servicio de usuarios
+            "cursos": "http://localhost:5002/api-docs",
+            "matriculas": "http://localhost:5003/api-docs",
+            "calificaciones": "http://localhost:5004/api-docs",
+            "asistencia": "http://localhost:5005/api-docs",
         },
-        "docs": "/docs"
+        "gateway": "http://localhost:8000/docs",  # Swagger del Gateway
+        "traefik": "http://localhost:8080"       # Dashboard Traefik
     }
+
 
 
 @app.get("/health")

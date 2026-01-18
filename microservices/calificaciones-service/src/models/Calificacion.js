@@ -55,7 +55,8 @@ const calificacionSchema = new mongoose.Schema({
         maxlength: [300, 'Las observaciones no pueden exceder 300 caracteres']
     }
 }, {
-    timestamps: true
+    timestamps: true,
+    collation: 'calificacion'
 });
 
 calificacionSchema.index({ estudiante: 1, curso: 1, periodo: 1 }, { unique: true });
@@ -87,4 +88,5 @@ calificacionSchema.statics.promedioEstudiante = async function (estudianteId, pe
     return Math.round(suma / calificaciones.length);
 };
 
-export default mongoose.model('Calificacion', calificacionSchema);
+// export default mongoose.model('Calificacion', calificacionSchema);
+export default mongoose.model('Calificacion', calificacionSchema, 'calificacions');
